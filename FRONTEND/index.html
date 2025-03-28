@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepfake Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Deepfake Detection</h1>
+    
+    <form id="upload-form" action="{{ url_for('predict') }}" method="POST" enctype="multipart/form-data">
+        <label for="file-upload" class="upload-box">
+            <img src="{{ url_for('static', filename='upload-icon.png') }}" alt="Upload Icon">
+            <p>Click or Drag to Upload</p>
+        </label>
+        <input type="file" id="file-upload" name="file" accept="image/*" required>
+        <button type="submit">Detect Deepfake</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        document.getElementById("file-upload").addEventListener("change", function () {
+            document.querySelector(".upload-box p").innerText = "File Selected!";
+        });
+
+        document.getElementById("upload-form").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            let formData = new FormData(this);
+            document.getElementById("result").innerText = "Processing...";
+
+            fetch("{{ url_for('predict') }}", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("result").innerText = `Prediction: ${data.result}`;
+            })
+            .catch(error => {
+                document.getElementById("result").innerText = "Error occurred!";
+            });
+        });
+    </script>
+</body>
+</html>
