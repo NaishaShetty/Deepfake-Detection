@@ -1,23 +1,17 @@
 # Real-Time-Deepfake-Detection
 
 # Overview
-Deepfakes have become a major threat in digital media, allowing AI-generated fake images to mimic real human faces convincingly. This project leverages Deep Learning to classify images as real or fake using a Convolutional Neural Network (CNN) trained on a large dataset of real and AI-generated faces.
-
-The model is built with TensorFlow & Keras, trained on the 140K Real and Fake Faces dataset, and achieves high accuracy in detecting deepfakes.
+This project is a deepfake detection system that utilizes a fine-tuned ResNet18 model to classify images as real or fake. The system includes a Flask-based web application for users to upload images and receive predictions.
 
 #  Features
-- CNN-based deepfake detection
+- Deep Learning Model: ResNet18 pre-trained on ImageNet, fine-tuned for binary classification.
 -Automated image preprocessing
-- Real-time classification
--Scalable and efficient
-- High accuracy on unseen data
+- Web Interface: Built with Flask and HTML/CSS, allowing users to upload images.
+-Backend Processing: Uses PyTorch for deep learning inference.
+- User-Friendly: Simple interface for deepfake detection.
 
 # Dataset
-Dataset Name: 140K Real and Fake Faces (from Kaggle)
-Dataset Link: [https://www.kaggle.com/datasets/xhlulu/140k-real-and-fake-faces](https://www.kaggle.com/datasets/xhlulu/140k-real-and-fake-faces)  
+Dataset Name: Deepfake and real images (from Kaggle)
+Dataset Link: [[https://www.kaggle.com/datasets/xhlulu/140k-real-and-fake-faces](https://www.kaggle.com/datasets/xhlulu/140k-real-and-fake-faces)  ](https://www.kaggle.com/datasets/manjilkarki/deepfake-and-real-images)
 
 
-#  Results & Performance
-Accuracy: X% on the test dataset
-Loss: Y
-Observations: The model effectively differentiates real and fake images using CNN-based feature extraction.
